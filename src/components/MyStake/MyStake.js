@@ -11,7 +11,9 @@ const MyStake = ({
   onClickWithdraw,
   rewardAmount,
   stakeAmount,
-  connected
+  connected,
+  onGetAddressBalance,
+  addressInput,
 }) => {
   return (
     <div className={Styles.root}>
@@ -56,6 +58,22 @@ const MyStake = ({
             disabled = {!connected}
             >Unstake</button>
           </form>
+          <div className={Styles.form_group}>
+            <form onSubmit = {onGetAddressBalance} className={Styles.form} >
+              <input 
+                type = "text" 
+                placeholder="Search by address" 
+                className={Styles.input}
+                value = {addressInput}
+                onChange = {onChangeInput}
+                id ="address"
+              />
+              <button type="submit"
+              className={clsx({[Styles.stake_btn]: true, })}
+              >Search</button>
+            </form>
+
+          </div>
         </div>
     </div>
   )

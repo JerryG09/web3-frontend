@@ -56,3 +56,7 @@
     background-color: rgb(168, 164, 164);
     cursor: not-allowed;;
 }
+
+.form_group {
+    display: flex;
+}
