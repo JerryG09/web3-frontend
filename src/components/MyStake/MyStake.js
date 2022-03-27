@@ -14,6 +14,8 @@ const MyStake = ({
   connected,
   onGetAddressBalance,
   addressInput,
+  showAddBalance,
+  stakeDetails
 }) => {
   return (
     <div className={Styles.root}>
@@ -72,7 +74,11 @@ const MyStake = ({
               className={clsx({[Styles.stake_btn]: true, })}
               >Search</button>
             </form>
-
+            <div className={Styles.balance}>
+              {showAddBalance && (
+                <p>Balance: {stakeDetails.amount? `${stakeDetails.amount} BRT` : 0.0}</p>
+              )}
+            </div>
           </div>
         </div>
     </div>

@@ -60,3 +60,11 @@
 .form_group {
     display: flex;
 }
+.balance {
+    display:flex;
+    align-items: flex-end;
+    margin-left: 2rem;
+    color: rgb(8, 153, 107);
+    font-weight: 400;
+    font-size: 2rem;
+}

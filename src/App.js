@@ -39,6 +39,7 @@ function App() {
   const [stateHistory, setStakeHistory] = useState([]);
   const [stakeDetails, setStakeDetails] = useState({})
   const [searchAddress, setSearchAddress] = useState("");
+  const [showAddBalance, setShowAddBalance] = useState(false);
 
   // helper function for getting the matic and token balance, given an address
   const getAccountDetails = async (address) => {
@@ -251,10 +252,10 @@ function App() {
   }
 
   const onGetAddressBalance = async(e) =>{
-    if(searchAddress === ""){
+    e.preventDefault()
+    if(!searchAddress){
       return alert("Input field cannot be empty!")
     }
-    e.preventDefault()
     const customProvider = new ethers.providers.JsonRpcProvider(
       process.env.REACT_APP_RPC_URL
     );
@@ -267,11 +268,12 @@ function App() {
       searchAddress
     );
     console.log(userDetails)
-        setStakeDetails( {
-          address:userDetails.staker,
-          amount:utils.formatUnits(userDetails.stakeAmount.toString(),18),
-          time: formatDate(userDetails.time._hex)
-        })
+    setStakeDetails( {
+      address:userDetails.staker,
+      amount:utils.formatUnits(userDetails.stakeAmount.toString(),18),
+      time: formatDate(userDetails.time._hex)
+    })
+    setShowAddBalance(true);
     setSearchAddress("")
   }
 
@@ -293,6 +295,8 @@ function App() {
           rewardAmount = {rewardAmount}
           connected = {connected}
           onGetAddressBalance={onGetAddressBalance}
+          showAddBalance={showAddBalance}
+          stakeDetails={stakeDetails}
         />
         <StakeHistory
           stakeData = {stateHistory}
