@@ -76,7 +76,7 @@ const MyStake = ({
             </form>
             <div className={Styles.balance}>
               {showAddBalance && (
-                <p>Balance: {stakeDetails.amount? `${stakeDetails.amount} BRT` : 0.0}</p>
+                <p>Balance: {stakeDetails? `${stakeDetails} BRT` : 0.0}</p>
               )}
             </div>
           </div>
